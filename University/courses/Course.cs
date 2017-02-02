@@ -11,11 +11,11 @@ namespace University.Courses
     {
         #region fields
         private List<Student> studentRoster = new List<Student>();
+
         private string title;
         private string major;
         private DateTime timeOfDay;
         private int creditHour;
-
         #endregion fields
 
   
@@ -31,7 +31,6 @@ namespace University.Courses
             this.major = major;
             this.creditHour = creditHour;
         }
-
         #endregion constructors
 
 

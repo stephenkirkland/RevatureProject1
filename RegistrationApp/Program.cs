@@ -44,9 +44,22 @@ namespace RegistrationApp
                 list.Add(s);
             }
 
+            #region try-catch-finally
+            //multiply catches
             try
             {
+                // open file
+                // read from file
+                // write and save file
                 testCourse.AddStudents(list);
+            }
+            catch(DivideByZeroException ex)
+            {
+
+            }
+            catch (ArgumentNullException d)
+            {
+
             }
             catch (Exception e)
             {
@@ -54,6 +67,11 @@ namespace RegistrationApp
                 Console.WriteLine();
                 // Console.WriteLine(e.ToString());
             }
+            finally
+            {
+                // close file
+            }
+            #endregion try-catch-finally
 
             Console.ReadLine();
         }
