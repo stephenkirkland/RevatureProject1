@@ -9,6 +9,9 @@ namespace University
     public static class Global
     {
         public static int maxStudents = 20;
+        public static int maxNumberOfCourses = 15;
+        public static int maxNumberOfOneHour = 10;
+        public static int maxNumberOfTwoHour = 5;
     }
 
     public static class Errors

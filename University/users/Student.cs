@@ -12,7 +12,8 @@ namespace University.Users
         #region fields
         private string major;
         private bool isFulltime;  //full-time or part-time
-        List<Course> classes = new List<Course>();
+        //List<Course> classes = new List<Course>();
+        Dictionary<string, Course> classes = new Dictionary<string, Course>();
 
         //array of their courses
         #endregion fields
@@ -38,10 +39,10 @@ namespace University.Users
 
             else
             {
-                foreach (Course item in classes)
+                foreach (KeyValuePair<string, Course> c in classes)
                 {
                     sb.Append("\n");
-                    sb.Append(item.Title);
+                    sb.Append(c.Value.Title);
                 }
             }
 

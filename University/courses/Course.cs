@@ -11,11 +11,11 @@ namespace University.Courses
     {
         #region fields
         private List<Student> studentRoster = new List<Student>();
+
         private string title;
         private string major;
         private DateTime timeOfDay;
         private int creditHour;
-
         #endregion fields
 
   
@@ -31,7 +31,6 @@ namespace University.Courses
             this.major = major;
             this.creditHour = creditHour;
         }
-
         #endregion constructors
 
 
@@ -148,6 +147,29 @@ namespace University.Courses
                 return true;
             }
             throw new Exception(Errors.notCorrectHours);
+        }
+
+        public Student GetStudentByID(int id)
+        {
+            var student = studentRoster.Where(s => s.Id == id).FirstOrDefault(); // inside the Where() is the Lambda function, where it traverse through the users' ids and returns the id in the function's parameter to the variable x.
+            return student;
+        }
+
+        public IEnumerable<Student> GetStudentByFirstName(string firstname)
+        {
+            var results = studentRoster.Where(fn => fn.firstname == firstname);
+            return results;
+        }
+
+        public IEnumerable<Student> GetStudentByFullName(string fullname)
+        {
+            var results = studentRoster.Where(fn => fn.Fullname == fullname);
+            return results;
+        }
+
+        public IEnumerable<Student> GetStudentByFullName(string firstname, string lastname)
+        {
+            return GetStudentByFullName($"{firstname} {lastname}");
         }
 
 
