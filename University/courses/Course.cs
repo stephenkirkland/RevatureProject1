@@ -12,6 +12,7 @@ namespace University.Courses
         #region fields
         private List<Student> studentRoster = new List<Student>();
 
+        public bool isClosed;
         private string title;
         private string major;
         private DateTime timeOfDay;
@@ -34,8 +35,8 @@ namespace University.Courses
         #endregion constructors
 
 
-        public delegate bool CloseRegistration();
-        public CloseRegistration cr;
+        public delegate bool CloseRegistration(Course courseToClose);
+        public CloseRegistration cr = null;
 
         /// <summary>
         /// checks to see if the class is full
@@ -44,15 +45,9 @@ namespace University.Courses
         {
             get
             {
-                if (cr != null && studentRoster.Count == Global.maxStudents)
-                {
-                    cr();
-                }
                 return studentRoster.Count == Global.maxStudents;
             }
         }
-
-
 
 
         /// <summary>
@@ -75,6 +70,10 @@ namespace University.Courses
         {
             SpaceCheck(studentRoster.Count + 1);
             studentRoster.Add(student);
+            if (cr != null && isFull == true)
+            {
+                cr(this);
+            }
             return true;
         }
 
@@ -190,6 +189,12 @@ namespace University.Courses
             return GetStudentByFullName($"{firstname} {lastname}");
         }
 
+        private static bool CloseCourse(Course courseToClose)
+        {
+            courseToClose.isClosed = true;
+            Console.WriteLine($"Registration closed for {courseToClose.Title}");
+            return true;
+        }
 
         #region properties
         /// <summary>

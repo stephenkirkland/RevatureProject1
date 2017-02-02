@@ -9,6 +9,8 @@ namespace University.Users
 {
     public class Administrator : User
     {
+        private static string status = "";
+
         public override string GetInfo()
         {
             return base.ToString();
@@ -22,5 +24,21 @@ namespace University.Users
         {
             this.password = password;
         }
+
+        public static bool CloseCourse(Course courseToClose)
+        {
+            courseToClose.isClosed = true;
+            Console.WriteLine($"Registration closed for {courseToClose.Title}");
+            return true;
+        }
+
+        public static bool ChangeCourseStatus(Course courseToClose)
+        {
+            courseToClose.isClosed = !courseToClose.isClosed;
+            status = courseToClose.isClosed == true ? "closed" : "open";
+            Console.WriteLine($"Registration {status} for {courseToClose.Title}");
+            return true;
+        }
+
     }
 }
