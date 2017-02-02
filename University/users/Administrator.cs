@@ -32,7 +32,7 @@ namespace University.Users
             return true;
         }
 
-        public static bool ChangeCourseStatus(Course courseToClose)
+        public bool ChangeCourseStatus(Course courseToClose)
         {
             courseToClose.isClosed = !courseToClose.isClosed;
             status = courseToClose.isClosed == true ? "closed" : "open";
