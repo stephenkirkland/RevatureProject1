@@ -13,7 +13,7 @@ namespace University.Users
     public abstract class User
     {
         #region fields
-        private string firstname;
+        public string firstname;
         private string lastname;
         protected string password;
         private string email;

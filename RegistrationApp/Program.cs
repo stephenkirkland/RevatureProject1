@@ -38,6 +38,8 @@ namespace RegistrationApp
             dotnet.AddStudent(summer);
             dotnet.AddStudent(kirk);
 
+            Console.WriteLine(dotnet.GetStudentByFirstName("Stephen").Count());
+
             Console.WriteLine(s.GetInfo());
 
             try {
