@@ -50,9 +50,13 @@ namespace RegistrationApp
             int numberOfSummers = dotnet.GetStudentByFullName("Summer", "Wilken").Count();
             Console.WriteLine($"Total number of Summer Wilkens: {numberOfSummers}\n");
 
-            
-
-            Console.WriteLine(s.GetInfo());
+            try
+            {
+                Student f = dotnet.GetStudentByID(3);
+            }
+            catch(NullReferenceException n) { 
+                Console.WriteLine("nope! no student.");
+            }
 
             try {
                 testCourse.OneOrTwo();
@@ -65,7 +69,7 @@ namespace RegistrationApp
 
             List<Student> list = new List<Student>();
             testCourse.AddStudents(list);
-            Console.WriteLine(testCourse.RosterCount);
+            Console.WriteLine($"No students added yet...? {testCourse.RosterCount}");
 
             for (int i = 0; i < 3; i++)
             {

@@ -18,8 +18,7 @@ namespace University.Courses
         bool OneOrTwo();
         Student GetStudentByID(int id);
         //Student GetStudentByFirstName(string firstname);
-
-        List<Student> GetStudentRoster();
+        //List<Student> GetStudentRoster();
 
         // properties
         bool isFull { get; }

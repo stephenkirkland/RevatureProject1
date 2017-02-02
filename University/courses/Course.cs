@@ -34,6 +34,9 @@ namespace University.Courses
         #endregion constructors
 
 
+        public delegate bool CloseRegistration();
+        public CloseRegistration cr;
+
         /// <summary>
         /// checks to see if the class is full
         /// </summary>
@@ -41,9 +44,16 @@ namespace University.Courses
         {
             get
             {
+                if (cr != null && studentRoster.Count == Global.maxStudents)
+                {
+                    cr();
+                }
                 return studentRoster.Count == Global.maxStudents;
             }
         }
+
+
+
 
         /// <summary>
         /// counts the number of students in a course
@@ -123,7 +133,8 @@ namespace University.Courses
         /// <returns></returns>
         public bool RemoveStudent(string firstname, string lastname)
         {
-            throw new NotImplementedException();
+
+            return false;
         }
 
         /// <summary>
@@ -152,6 +163,12 @@ namespace University.Courses
 
         public Student GetStudentByID(int id)
         {
+            /* The same exact thing as below.
+             * var temp = from x in studentRoster 
+             * where x.Id == id;
+             * select x;
+            */
+
             var student = studentRoster.Where(s => s.Id == id).FirstOrDefault(); // inside the Where() is the Lambda function, where it traverse through the users' ids and returns the id in the function's parameter to the variable x.
             return student;
         }
