@@ -12,12 +12,20 @@ namespace RegistrationApp
     {
         static void Main(string[] args)
         {
-            Course testCourse = new Course("AI", new DateTime());
+            Course testCourse = new Course("AI", new DateTime(), 3);
             Student s = new Student("Stephen", "Kirkland", "ha", "sk01417@uga.edu", 91253674, "CSEE");
             Administrator ma = new Administrator();
             User u = new Administrator();
 
             Console.WriteLine(s.GetInfo());
+            try {
+                testCourse.OneOrTwo();
+            }
+            catch (Exception d)
+            {
+                Console.WriteLine(d.Message);
+                Console.WriteLine();
+            }
 
             List<Student> list = new List<Student>();
             testCourse.AddStudents(list);

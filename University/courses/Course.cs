@@ -24,7 +24,7 @@ namespace University.Courses
         {
         }
 
-        public Course(string title, DateTime timeOfDate, int creditHour = 1, string major = "elective")
+        public Course(string title, DateTime timeOfDay, int creditHour = 1, string major = "elective")
         {
             this.title = title;
             this.timeOfDay = timeOfDay;
@@ -141,7 +141,16 @@ namespace University.Courses
             return true;
         }
 
-     
+        public bool OneOrTwo()
+        {
+            if(creditHour == 1 || creditHour == 2)
+            {
+                return true;
+            }
+            throw new Exception(Errors.notCorrectHours);
+        }
+
+
         #region properties
         /// <summary>
         /// a property that returns the title of the course
