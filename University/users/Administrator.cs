@@ -9,8 +9,31 @@ namespace University.Users
 {
     public class Administrator : User
     {
+        // variables
         private static string status = "";
+        private static Administrator instance;
 
+        // constructors
+        private Administrator()
+        {
+        }
+
+
+        // properties
+        public static Administrator GetInstance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Administrator();
+                }
+                return instance;
+            }
+        }
+
+
+        // methods
         public override string GetInfo()
         {
             return base.ToString();
@@ -32,6 +55,11 @@ namespace University.Users
             return true;
         }
 
+        /// <summary>
+        /// toggles whether a course is open or closed
+        /// </summary>
+        /// <param name="courseToClose"></param>
+        /// <returns></returns>
         public bool ChangeCourseStatus(Course courseToClose)
         {
             courseToClose.isClosed = !courseToClose.isClosed;

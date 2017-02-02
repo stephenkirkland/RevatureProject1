@@ -27,8 +27,8 @@ namespace RegistrationApp
             Student summer = new Student("Summer", "Wilken", "pwd", "9@9.com", 9);
             Student kirk = new Student("Stephen", "Kirkland", "pwd", "10@10.com", 10);
 
-            Administrator a1 = new Administrator();
-            Administrator b2 = new Administrator();
+            Administrator a1 = Administrator.GetInstance;
+            Administrator b2 = Administrator.GetInstance;
 
             dotnet.cr = a1.ChangeCourseStatus;
             dotnet.cr += b2.ChangeCourseStatus;
