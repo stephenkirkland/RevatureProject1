@@ -149,6 +149,12 @@ namespace University.Courses
             throw new Exception(Errors.notCorrectHours);
         }
 
+        public Student GetStudentByID(int id)
+        {
+            var student = studentRoster.Where(s => s.Id == id).FirstOrDefault(); // inside the Where() is the Lambda function, where it traverse through the users' ids and returns the id in the function's parameter to the variable x.
+            return student;
+        }
+
 
         #region properties
         /// <summary>

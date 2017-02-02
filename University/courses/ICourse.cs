@@ -16,6 +16,7 @@ namespace University.Courses
         bool RemoveStudent(Student student);
         bool RemoveStudent(string firstname, string lastname);
         bool OneOrTwo();
+        Student GetStudentByID(int id);
 
         List<Student> GetStudentRoster();
 
