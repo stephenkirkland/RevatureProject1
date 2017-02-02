@@ -14,7 +14,7 @@ namespace University.Users
     {
         #region fields
         public string firstname;
-        private string lastname;
+        public string lastname;
         protected string password;
         private string email;
         private int id;

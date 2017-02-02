@@ -161,6 +161,12 @@ namespace University.Courses
             return results;
         }
 
+        public IEnumerable<Student> GetStudentByFullName(string fullname)
+        {
+            var results = studentRoster.Where(fn => fn.Fullname == fullname);
+            return results;
+        }
+
 
         #region properties
         /// <summary>
