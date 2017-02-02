@@ -167,6 +167,11 @@ namespace University.Courses
             return results;
         }
 
+        public IEnumerable<Student> GetStudentByFullName(string firstname, string lastname)
+        {
+            return GetStudentByFullName($"{firstname} {lastname}");
+        }
+
 
         #region properties
         /// <summary>

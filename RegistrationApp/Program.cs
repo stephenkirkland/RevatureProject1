@@ -24,7 +24,7 @@ namespace RegistrationApp
             Student alain = new Student("Alain", "a", "pwd", "6@6.com", 6);
             Student antone = new Student("Antone", "a", "pwd", "7@7.com", 7);
             Student erik = new Student("Erik", "a", "pwd", "8@8.com", 8);
-            Student summer = new Student("Summer", "a", "pwd", "9@9.com", 9);
+            Student summer = new Student("Summer", "Wilken", "pwd", "9@9.com", 9);
             Student kirk = new Student("Stephen", "Kirkland", "pwd", "10@10.com", 10);
             
             dotnet.AddStudent(paul);
@@ -43,6 +43,9 @@ namespace RegistrationApp
 
             int numberOfStephens = dotnet.GetStudentByFirstName("Stephen").Count();
             Console.WriteLine($"Total number of Stephens: {numberOfStephens}\n");
+
+            int numberOfSummers = dotnet.GetStudentByFullName("Summer", "Wilken").Count();
+            Console.WriteLine($"Total number of Summer Wilkens: {numberOfSummers}\n");
 
             Console.WriteLine(s.GetInfo());
 
