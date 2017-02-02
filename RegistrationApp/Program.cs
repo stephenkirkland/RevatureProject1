@@ -41,11 +41,16 @@ namespace RegistrationApp
             int StephenKirkland = dotnet.GetStudentByFullName("Stephen Kirkland").Count();
             Console.WriteLine($"Number of Stephen Kirklands: {StephenKirkland}\n");
 
+            //testing to see if the remove student works...it does! 
+            dotnet.RemoveStudent(3); // removed other Stephen
+            
             int numberOfStephens = dotnet.GetStudentByFirstName("Stephen").Count();
             Console.WriteLine($"Total number of Stephens: {numberOfStephens}\n");
 
             int numberOfSummers = dotnet.GetStudentByFullName("Summer", "Wilken").Count();
             Console.WriteLine($"Total number of Summer Wilkens: {numberOfSummers}\n");
+
+            
 
             Console.WriteLine(s.GetInfo());
 

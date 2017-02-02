@@ -111,7 +111,8 @@ namespace University.Courses
         /// <returns></returns>
         public bool RemoveStudent(int id)
         {
-            throw new NotImplementedException();
+            Student s = GetStudentByID(id);
+            return studentRoster.Remove(s);
         }
 
         /// <summary>
