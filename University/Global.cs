@@ -20,6 +20,9 @@ namespace University
         public static string notCorrectHours = "The class has to be either 1 or 2 credit hours.";
     }
 
+    /*
+     * Understanding partial classes
+     
     public partial class Temp
     {
         public void Method111()
@@ -48,4 +51,5 @@ namespace University
 
         }
     }
+    */
 }

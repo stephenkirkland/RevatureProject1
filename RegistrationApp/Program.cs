@@ -12,10 +12,11 @@ namespace RegistrationApp
     {
         static void Main(string[] args)
         {
+            // declaring courses
             Course testCourse = new Course("AI", new DateTime());
             Course dotnet = new Course("dotnet", new DateTime());
 
-            Student s = new Student("Stephen", "Kirkland", "ha", "sk01417@uga.edu", 91253674, "CSEE");
+            // declaring students
             Student paul = new Student("Paul", "a", "pwd", "1@1.com", 1);
             Student mike = new Student("Mike", "a", "pwd", "2@2.com", 2);
             Student stephen = new Student("Stephen", "a", "pwd", "3@3.com", 3);
@@ -27,12 +28,19 @@ namespace RegistrationApp
             Student summer = new Student("Summer", "Wilken", "pwd", "9@9.com", 9);
             Student kirk = new Student("Stephen", "Kirkland", "pwd", "10@10.com", 10);
 
+            // declaring administrators
             Administrator a1 = Administrator.GetInstance;
-            Administrator b2 = Administrator.GetInstance;
+            Administrator b2 = Administrator.GetInstance; /* since this is implementing singleton, both pointers of a1 and b2 point to the same administrator instance.
+            */
 
+            /*
+             * using a delegate that toggles the availabililty of a course;
+             * for example: dotnet
+             */
             dotnet.cr = a1.ChangeCourseStatus;
             dotnet.cr += b2.ChangeCourseStatus;
 
+            // adding students to the dotnet course
             dotnet.AddStudent(paul);
             dotnet.AddStudent(mike);
             dotnet.AddStudent(stephen);
@@ -53,31 +61,36 @@ namespace RegistrationApp
             dotnet.AddStudent(erik);
             dotnet.AddStudent(summer);
             dotnet.AddStudent(kirk);
-
 
           /*
-            
+           * --------------------------------------------------------------------------------
+           * Beginning of extra test cases.
+           */
+           
             int StephenKirkland = dotnet.GetStudentByFullName("Stephen Kirkland").Count();
-
-            Console.WriteLine($"Number of Stephen Kirklands: {StephenKirkland}\n");
-
-            dotnet.RemoveStudent(3); // removed other Stephen
-            
             int numberOfStephens = dotnet.GetStudentByFirstName("Stephen").Count();
-
-            Console.WriteLine($"Total number of Stephens: {numberOfStephens}\n");
-
             int numberOfSummers = dotnet.GetStudentByFullName("Summer", "Wilken").Count();
 
+            // proving that get by full name works
+            Console.WriteLine($"Number of Stephen Kirklands: {StephenKirkland}\n");
+
+            // getting student by first name isn't enough; needs more information
+            Console.WriteLine($"Total number of Stephens: {numberOfStephens}\n");
+
+            // removing other Stephen; now numOfStephens should be one less.
+            dotnet.RemoveStudent(3);
+            Console.WriteLine($"Total number of Stephens: {numberOfStephens}\n");
+
+            // proving that get student by first and last name works
             Console.WriteLine($"Total number of Summer Wilkens: {numberOfSummers}\n");
 
             #region try if student is gone
             try
             {
-                Student f = dotnet.GetStudentByID(3);
+                dotnet.GetStudentByID(3);
             }
             catch(NullReferenceException n) { 
-                Console.WriteLine("nope! no student.");
+                Console.WriteLine(n.Message);
             }
             #endregion try
 
@@ -97,19 +110,20 @@ namespace RegistrationApp
 
             dotnet.AddStudents(list);
 
-            Console.WriteLine($"No students added yet...? {testCourse.RosterCount}");
+            Console.WriteLine($"No students added yet...? {dotnet.RosterCount}");
 
             for (int i = 0; i < 3; i++)
             {
-                list.Add(s);
+                list.Add(kirk);
             }
-            dotnet.AddStudents(list);
 
-            Console.WriteLine(testCourse.RosterCount);
+            //dotnet.AddStudents(list);
+
+            Console.WriteLine(dotnet.RosterCount);
 
             for (int i = 0; i < 18; i++)
             {
-                list.Add(s);
+                list.Add(kirk);
             }
 
             #region try-catch-finally
@@ -140,8 +154,6 @@ namespace RegistrationApp
                 // close file
             }
             #endregion try-catch-finally
-
-        */
 
             Console.ReadLine();
         }
