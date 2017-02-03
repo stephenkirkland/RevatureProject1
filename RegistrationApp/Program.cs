@@ -17,14 +17,14 @@ namespace RegistrationApp
             Course dotnet = new Course("dotnet", new DateTime());
 
             // declaring students
-            Student paul = new Student("Paul", "a", "pwd", "1@1.com", 1);
-            Student mike = new Student("Mike", "a", "pwd", "2@2.com", 2);
+            Student paul = new Student("Paul", "Stanton", "pwd", "1@1.com", 1);
+            Student mike = new Student("Mike", "Furlow", "pwd", "2@2.com", 2);
             Student stephen = new Student("Stephen", "a", "pwd", "3@3.com", 3);
             Student chris = new Student("Chris", "a", "pwd", "4@4.com", 4);
             Student devonte = new Student("Devonte", "a", "pwd", "5@5.com", 5);
             Student alain = new Student("Alain", "a", "pwd", "6@6.com", 6);
-            Student antone = new Student("Antone", "a", "pwd", "7@7.com", 7);
-            Student erik = new Student("Erik", "a", "pwd", "8@8.com", 8);
+            Student antone = new Student("Antone", "Eason", "pwd", "7@7.com", 7);
+            Student erik = new Student("Erik", "May", "pwd", "8@8.com", 8);
             Student summer = new Student("Summer", "Wilken", "pwd", "9@9.com", 9);
             Student kirk = new Student("Stephen", "Kirkland", "pwd", "10@10.com", 10);
 
