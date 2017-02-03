@@ -1,6 +1,6 @@
 # RevatureProject1
-### Author: Stephen Kirkland
-### Due Date: Tuesday, February 21, 2017
+#### Author: Stephen Kirkland
+#### Due Date: Tuesday, February 21, 2017
 College Registration App
 
 The main objective of this project is to create a college registration app that allows students to enroll in up to 6 credit-hour courses.
