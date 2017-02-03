@@ -17,4 +17,16 @@ The main objective of this project is to create a college registration app that 
 + You can add as many students to the university as we want.
 
 <b><u>Requirements:</u></b>
-+ Students have to have 
++ There should be only one administrator using singleton 
+
+
+<b>Status</b>
+- Freshman
+- Sophomore
+- Junior
+- Senior
+
+<b>List of 1-Hour Courses<b>
+- Basketball
+- Tennis
+- Psychology
