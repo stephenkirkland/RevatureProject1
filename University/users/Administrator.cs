@@ -18,7 +18,6 @@ namespace University.Users
         {
         }
 
-
         // properties
         public static Administrator GetInstance
         {
