@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationApp", "Registra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "University", "University\University.csproj", "{2DD15D47-3019-4133-981B-4E83C8CE13DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegApp.UnitTests", "RegApp.UnitTests\RegApp.UnitTests.csproj", "{562F5FCE-461B-4827-AD61-CFC1F47E595B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2DD15D47-3019-4133-981B-4E83C8CE13DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DD15D47-3019-4133-981B-4E83C8CE13DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DD15D47-3019-4133-981B-4E83C8CE13DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{562F5FCE-461B-4827-AD61-CFC1F47E595B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{562F5FCE-461B-4827-AD61-CFC1F47E595B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{562F5FCE-461B-4827-AD61-CFC1F47E595B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{562F5FCE-461B-4827-AD61-CFC1F47E595B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
