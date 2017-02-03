@@ -15,10 +15,16 @@ namespace RegApp.UnitTests
         public void AddNumbers()
         {
             // aragnge
+            int i = 1;
+            int j = 2;
 
             // act
+            int x = i + j;
 
             // assert
+            Assert.AreEqual(x, i+j);
+            Assert.AreEqual(3, x);
+            Assert.AreNotEqual(x, i);
         }
     }
 }
