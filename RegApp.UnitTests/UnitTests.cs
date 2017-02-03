@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using University.Courses;
+using University.Users;
 
 namespace RegApp.UnitTests
 {
@@ -25,6 +27,18 @@ namespace RegApp.UnitTests
             Assert.AreEqual(x, i+j);
             Assert.AreEqual(3, x);
             Assert.AreNotEqual(x, i);
+
+            /*
+             * Success == Green
+             * Fail == Red
+             */ 
+        } // AddNumbers class
+
+        [Test]
+        public void CoursesFullException()
+        {
+            
         }
+
     }
 }
