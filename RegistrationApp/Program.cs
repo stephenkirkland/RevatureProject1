@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using University.Users;
 using University.Courses;
@@ -62,100 +63,113 @@ namespace RegistrationApp
             dotnet.AddStudent(summer);
             dotnet.AddStudent(kirk);
 
-          /*
-           * --------------------------------------------------------------------------------
-           * Beginning of extra test cases.
-           */
-           
-            int StephenKirkland = dotnet.GetStudentByFullName("Stephen Kirkland").Count();
-            int numberOfStephens = dotnet.GetStudentByFirstName("Stephen").Count();
-            int numberOfSummers = dotnet.GetStudentByFullName("Summer", "Wilken").Count();
+            // experimenting with the threads from the Course.cs
+            Console.WriteLine();
+            var studentList = dotnet.GetStudentRoster();
+            Console.WriteLine();
+            Console.WriteLine($"{studentList.Result.Count}");
+            Console.WriteLine();
 
-            // proving that get by full name works
-            Console.WriteLine($"Number of Stephen Kirklands: {StephenKirkland}\n");
+            // page 241 in the book
+            Thread t1 = new Thread(dotnet.PrintRosterCount);
+            t1.Start();
+            t1.Join();
+            Console.WriteLine("Do Something!!");
 
-            // getting student by first name isn't enough; needs more information
-            Console.WriteLine($"Total number of Stephens: {numberOfStephens}\n");
+            /*
+             * --------------------------------------------------------------------------------
+             * Beginning of extra test cases.
+             */
 
-            // removing other Stephen; now numOfStephens should be one less.
-            dotnet.RemoveStudent(3);
-            Console.WriteLine($"Total number of Stephens: {numberOfStephens}\n");
+            //int StephenKirkland = dotnet.GetStudentByFullName("Stephen Kirkland").Count();
+            //int numberOfStephens = dotnet.GetStudentByFirstName("Stephen").Count();
+            //int numberOfSummers = dotnet.GetStudentByFullName("Summer", "Wilken").Count();
 
-            // proving that get student by first and last name works
-            Console.WriteLine($"Total number of Summer Wilkens: {numberOfSummers}\n");
+            //// proving that get by full name works
+            //Console.WriteLine($"Number of Stephen Kirklands: {StephenKirkland}\n");
 
-            Console.WriteLine(dotnet.GetStudentByID(3));
+            //// getting student by first name isn't enough; needs more information
+            //Console.WriteLine($"Total number of Stephens: {numberOfStephens}\n");
 
-            #region try if student is gone
-            try
-            {
-                dotnet.GetStudentByID(3);
-            }
-            catch(NullReferenceException n) { 
-                Console.WriteLine(n.Message);
-            }
-            #endregion try
+            //// removing other Stephen; now numOfStephens should be one less.
+            //dotnet.RemoveStudent(3);
+            //Console.WriteLine($"Total number of Stephens: {numberOfStephens}\n");
 
-            #region 1 or 2 credit hours
-            try
-            {
-                dotnet.OneOrTwo();
-            }
-            catch (Exception d)
-            {
-                Console.WriteLine(d.Message);
-                Console.WriteLine();
-            }
-            #endregion 1 or 2 credit hours
+            //// proving that get student by first and last name works
+            //Console.WriteLine($"Total number of Summer Wilkens: {numberOfSummers}\n");
 
-            List<Student> list = new List<Student>();
+            //Console.WriteLine(dotnet.GetStudentByID(3));
 
-            dotnet.AddStudents(list);
+            //#region try if student is gone
+            //try
+            //{
+            //    dotnet.GetStudentByID(3);
+            //}
+            //catch(NullReferenceException n) { 
+            //    Console.WriteLine(n.Message);
+            //}
+            //#endregion try
 
-            Console.WriteLine($"No students added yet...? {dotnet.RosterCount}");
+            //#region 1 or 2 credit hours
+            //try
+            //{
+            //    dotnet.OneOrTwo();
+            //}
+            //catch (Exception d)
+            //{
+            //    Console.WriteLine(d.Message);
+            //    Console.WriteLine();
+            //}
+            //#endregion 1 or 2 credit hours
 
-            for (int i = 0; i < 3; i++)
-            {
-                list.Add(kirk);
-            }
+            //List<Student> list = new List<Student>();
 
             //dotnet.AddStudents(list);
 
-            Console.WriteLine(dotnet.RosterCount);
+            //Console.WriteLine($"No students added yet...? {dotnet.RosterCount}");
 
-            for (int i = 0; i < 18; i++)
-            {
-                list.Add(kirk);
-            }
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    list.Add(kirk);
+            //}
 
-            #region try-catch-finally
-            //multiply catches
-            try
-            {
-                // open file
-                // read from file
-                // write and save file
-                testCourse.AddStudents(list);
-            }
-            catch(DivideByZeroException ex)
-            {
+            ////dotnet.AddStudents(list);
 
-            }
-            catch (ArgumentNullException d)
-            {
+            //Console.WriteLine(dotnet.RosterCount);
 
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                Console.WriteLine();
-                // Console.WriteLine(e.ToString());
-            }
-            finally
-            {
-                // close file
-            }
-            #endregion try-catch-finally
+            //for (int i = 0; i < 18; i++)
+            //{
+            //    list.Add(kirk);
+            //}
+
+            //#region try-catch-finally
+            ////multiply catches
+            //try
+            //{
+            //    // open file
+            //    // read from file
+            //    // write and save file
+            //    testCourse.AddStudents(list);
+            //}
+            //catch(DivideByZeroException ex)
+            //{
+
+            //}
+            //catch (ArgumentNullException d)
+            //{
+
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //    Console.WriteLine();
+            //    // Console.WriteLine(e.ToString());
+            //}
+            //finally
+            //{
+            //    // close file
+            //}
+            //#endregion try-catch-finally
 
             Console.ReadLine();
         }

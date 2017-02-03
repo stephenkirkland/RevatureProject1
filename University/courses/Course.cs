@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using University.Users;
 using University;
@@ -116,6 +117,12 @@ namespace University.Courses
         public Task<List<Student>> FetchRoster()
         {
             return Task.Run(() => { return studentRoster; });
+        }
+
+        public void PrintRosterCount()
+        {
+            Thread.Sleep(1000);
+            Console.WriteLine($"number of students: {studentRoster.Count}");
         }
 
         /// <summary>
