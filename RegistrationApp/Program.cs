@@ -26,7 +26,23 @@ namespace RegistrationApp
             Student erik = new Student("Erik", "a", "pwd", "8@8.com", 8);
             Student summer = new Student("Summer", "Wilken", "pwd", "9@9.com", 9);
             Student kirk = new Student("Stephen", "Kirkland", "pwd", "10@10.com", 10);
-            
+
+            Administrator a1 = Administrator.GetInstance;
+            Administrator b2 = Administrator.GetInstance;
+
+            dotnet.cr = a1.ChangeCourseStatus;
+            dotnet.cr += b2.ChangeCourseStatus;
+
+            dotnet.AddStudent(paul);
+            dotnet.AddStudent(mike);
+            dotnet.AddStudent(stephen);
+            dotnet.AddStudent(chris);
+            dotnet.AddStudent(devonte);
+            dotnet.AddStudent(alain);
+            dotnet.AddStudent(antone);
+            dotnet.AddStudent(erik);
+            dotnet.AddStudent(summer);
+            dotnet.AddStudent(kirk);
             dotnet.AddStudent(paul);
             dotnet.AddStudent(mike);
             dotnet.AddStudent(stephen);
@@ -38,35 +54,56 @@ namespace RegistrationApp
             dotnet.AddStudent(summer);
             dotnet.AddStudent(kirk);
 
+
+          /*
+            
             int StephenKirkland = dotnet.GetStudentByFullName("Stephen Kirkland").Count();
+
             Console.WriteLine($"Number of Stephen Kirklands: {StephenKirkland}\n");
 
+            dotnet.RemoveStudent(3); // removed other Stephen
+            
             int numberOfStephens = dotnet.GetStudentByFirstName("Stephen").Count();
+
             Console.WriteLine($"Total number of Stephens: {numberOfStephens}\n");
 
             int numberOfSummers = dotnet.GetStudentByFullName("Summer", "Wilken").Count();
+
             Console.WriteLine($"Total number of Summer Wilkens: {numberOfSummers}\n");
 
-            Console.WriteLine(s.GetInfo());
+            #region try if student is gone
+            try
+            {
+                Student f = dotnet.GetStudentByID(3);
+            }
+            catch(NullReferenceException n) { 
+                Console.WriteLine("nope! no student.");
+            }
+            #endregion try
 
-            try {
-                testCourse.OneOrTwo();
+            #region 1 or 2 credit hours
+            try
+            {
+                dotnet.OneOrTwo();
             }
             catch (Exception d)
             {
                 Console.WriteLine(d.Message);
                 Console.WriteLine();
             }
+            #endregion 1 or 2 credit hours
 
             List<Student> list = new List<Student>();
-            testCourse.AddStudents(list);
-            Console.WriteLine(testCourse.RosterCount);
+
+            dotnet.AddStudents(list);
+
+            Console.WriteLine($"No students added yet...? {testCourse.RosterCount}");
 
             for (int i = 0; i < 3; i++)
             {
                 list.Add(s);
             }
-            testCourse.AddStudents(list);
+            dotnet.AddStudents(list);
 
             Console.WriteLine(testCourse.RosterCount);
 
@@ -103,6 +140,8 @@ namespace RegistrationApp
                 // close file
             }
             #endregion try-catch-finally
+
+        */
 
             Console.ReadLine();
         }

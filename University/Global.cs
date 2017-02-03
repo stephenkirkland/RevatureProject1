@@ -19,4 +19,33 @@ namespace University
         public static string notEnoughError = "Attempting to add too many students. Not enough space. Cannot add.";
         public static string notCorrectHours = "The class has to be either 1 or 2 credit hours.";
     }
+
+    public partial class Temp
+    {
+        public void Method111()
+        {
+
+        }
+    }
+
+    public partial class Temp
+    {
+        public void Method222()
+        {
+
+        }
+    }
+
+    public class Temp2
+    {
+        public void Method111()
+        {
+
+        }
+
+        public void Method222()
+        {
+
+        }
+    }
 }

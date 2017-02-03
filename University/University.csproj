@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.cs" />
+    <Compile Include="University.cs" />
     <Compile Include="users\Administrator.cs" />
     <Compile Include="courses\Course.cs" />
     <Compile Include="courses\ICourse.cs" />

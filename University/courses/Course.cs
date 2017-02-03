@@ -12,6 +12,7 @@ namespace University.Courses
         #region fields
         private List<Student> studentRoster = new List<Student>();
 
+        public bool isClosed;
         private string title;
         private string major;
         private DateTime timeOfDay;
@@ -34,6 +35,9 @@ namespace University.Courses
         #endregion constructors
 
 
+        public delegate bool CloseRegistration(Course courseToClose);
+        public CloseRegistration cr = null;
+
         /// <summary>
         /// checks to see if the class is full
         /// </summary>
@@ -44,6 +48,7 @@ namespace University.Courses
                 return studentRoster.Count == Global.maxStudents;
             }
         }
+
 
         /// <summary>
         /// counts the number of students in a course
@@ -65,6 +70,10 @@ namespace University.Courses
         {
             SpaceCheck(studentRoster.Count + 1);
             studentRoster.Add(student);
+            if (cr != null && isFull == true)
+            {
+                cr(this);
+            }
             return true;
         }
 
@@ -111,7 +120,8 @@ namespace University.Courses
         /// <returns></returns>
         public bool RemoveStudent(int id)
         {
-            throw new NotImplementedException();
+            Student s = GetStudentByID(id);
+            return studentRoster.Remove(s);
         }
 
         /// <summary>
@@ -122,7 +132,8 @@ namespace University.Courses
         /// <returns></returns>
         public bool RemoveStudent(string firstname, string lastname)
         {
-            throw new NotImplementedException();
+
+            return false;
         }
 
         /// <summary>
@@ -151,6 +162,12 @@ namespace University.Courses
 
         public Student GetStudentByID(int id)
         {
+            /* The same exact thing as below.
+             * var temp = from x in studentRoster 
+             * where x.Id == id;
+             * select x;
+            */
+
             var student = studentRoster.Where(s => s.Id == id).FirstOrDefault(); // inside the Where() is the Lambda function, where it traverse through the users' ids and returns the id in the function's parameter to the variable x.
             return student;
         }
@@ -172,6 +189,12 @@ namespace University.Courses
             return GetStudentByFullName($"{firstname} {lastname}");
         }
 
+        private static bool CloseCourse(Course courseToClose)
+        {
+            courseToClose.isClosed = true;
+            Console.WriteLine($"Registration closed for {courseToClose.Title}");
+            return true;
+        }
 
         #region properties
         /// <summary>
