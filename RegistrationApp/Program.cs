@@ -84,6 +84,8 @@ namespace RegistrationApp
             // proving that get student by first and last name works
             Console.WriteLine($"Total number of Summer Wilkens: {numberOfSummers}\n");
 
+            Console.WriteLine(dotnet.GetStudentByID(3));
+
             #region try if student is gone
             try
             {

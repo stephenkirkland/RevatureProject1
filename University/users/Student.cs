@@ -10,13 +10,12 @@ namespace University.Users
     public class Student : User
     {
         #region fields
+        Dictionary<string, Course> classes = new Dictionary<string, Course>();
         private string major;
         private bool isFulltime;  //full-time or part-time
-        //List<Course> classes = new List<Course>();
-        Dictionary<string, Course> classes = new Dictionary<string, Course>();
 
-        //array of their courses
         #endregion fields
+
         #region constructor
         public Student(string firstname, string lastname, string password, string email, int id,
             string major = "undecided") : base(firstname, lastname, password, email, id)

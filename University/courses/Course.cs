@@ -95,14 +95,28 @@ namespace University.Courses
         }
 
         /// <summary>
-        /// returns a list of all the students in the course
+        /// THREADING: (the following two functions below)
+        /// 
+        /// returns a list of all the students in the course;
+        /// runs simulanteously with the FetchRoster() function;
+        /// when the FetchRoster() receives the studentRoster, it then
+        /// stores the student roster into a list.
         /// </summary>
         /// <returns></returns>
-        public List<Student> GetStudentRoster()
+        public async Task<List<Student>> GetStudentRoster()
         {
-            return studentRoster;
+            Console.WriteLine("start async");
+            Console.WriteLine($"Count before fetch: {studentRoster.Count}");
+            var results = await FetchRoster();
+            Console.WriteLine($"Count after fetch: {studentRoster.Count}");
+            Console.WriteLine("end async");
+            return results;
         }
 
+        public Task<List<Student>> FetchRoster()
+        {
+            return Task.Run(() => { return studentRoster; });
+        }
 
         /// <summary>
         /// supposed to remove a specified student from the course
