@@ -194,9 +194,10 @@ namespace University.Courses
             return student;
         }
 
-        public IEnumerable<Student> GetStudentByFirstName(string firstname)
+        [Obsolete ("method is for LINQ demo")] // example of a directive
+        public List<Student> GetStudentByFirstName(string firstname)
         {
-            var results = studentRoster.Where(fn => fn.firstname == firstname);
+            var results = studentRoster.Where(fn => fn.firstname == firstname).ToList();
             return results;
         }
 
