@@ -26,7 +26,21 @@ The main objective of this project is to create a college registration app that 
 - Junior
 - Senior
 
-<b>List of 1-Hour Courses<b>
+<b>List of 1-Hour Courses</b>
 - Basketball
 - Tennis
 - Psychology
+- American Government
+- German
+- French
+- Anthropology
+- Art
+- Spanish
+- Religion
+
+<b>List of 2-Hour Courses</b>
+- Calculus II
+- Data Structures
+- Physics
+- Artificial Intelligence
+- Engineering Statics
