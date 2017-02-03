@@ -1,7 +1,26 @@
 # RevatureProject1
+#### Author: Stephen Kirkland
+#### Due Date: Tuesday, February 21, 2017
 College Registration App
 
 The main objective of this project is to create a college registration app that allows students to enroll in up to 6 credit-hour courses.
+
+Some of the main focuses on this project were:
+- architecture
+- modularity
+- abstraction
+- testability
+- inheritance
+
+<b>Included Files:</b>
+- RegistrationApp.cs
+- User.cs (abstract class)
+- Student.cs
+- Administrator.cs (singleton)
+- Course.cs
+- ICourse.cs (interface)
+- Global.cs
+- University.cs
 
 <b><u>Courses:</u></b>
 + There are only 15 courses
