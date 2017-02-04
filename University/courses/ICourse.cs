@@ -17,12 +17,13 @@ namespace University.Courses
         bool RemoveStudent(string firstname, string lastname);
         bool OneOrTwo();
         Student GetStudentByID(int id);
-        //Student GetStudentByFirstName(string firstname);
-        //List<Student> GetStudentRoster();
+        List<Student> GetStudentByFirstName(string firstname);
+        Task<List<Student>> GetStudentRoster();
 
         // properties
+        string Title { get; }
+        TimeSpan CreditHours { get; }
         bool isFull { get; }
         int RosterCount { get; }
-        string Title { get; }
     }
 }

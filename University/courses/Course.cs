@@ -19,9 +19,10 @@ namespace University.Courses
         private string major;
         private DateTime timeOfDay;
         private int creditHour;
+        private TimeSpan timeSpan;
         #endregion fields
 
-  
+
         #region constructors
         public Course()
         {
@@ -33,36 +34,30 @@ namespace University.Courses
             this.timeOfDay = timeOfDay;
             this.major = major;
             this.creditHour = creditHour;
-        }
+
+            while (creditHour != 1 && creditHour != 2)
+            {
+                Console.WriteLine($"{Title}'s credit hours must be 1 or 2.");
+                Console.WriteLine("Enter either 1 or 2: \n");
+                string correction = Console.ReadLine();
+                Console.WriteLine();
+                int i = Convert.ToInt32(correction);
+                creditHour = i;
+            }
+            
+            this.timeSpan = new TimeSpan(creditHour, 0, 0);
+        } // while
         #endregion constructors
 
-
+        /// <summary>
+        /// declaring the course delegate that closes a course
+        /// </summary>
+        /// <param name="courseToClose">the course that will be closed</param>
+        /// <returns></returns>
         public delegate bool CloseRegistration(Course courseToClose);
         public CloseRegistration cr = null;
 
-        /// <summary>
-        /// checks to see if the class is full
-        /// </summary>
-        public bool isFull
-        {
-            get
-            {
-                return studentRoster.Count == Global.maxStudents;
-            }
-        }
-
-
-        /// <summary>
-        /// counts the number of students in a course
-        /// </summary>
-        public int RosterCount
-        {
-            get
-            {
-                return studentRoster.Count;
-            }
-        }
-
+        
         /// <summary>
         /// adds a student to the roster and increments the student roster
         /// </summary>
@@ -96,27 +91,32 @@ namespace University.Courses
         }
 
         /// <summary>
-        /// THREADING: (the following two functions below)
-        /// 
-        /// returns a list of all the students in the course;
-        /// runs simulanteously with the FetchRoster() function;
-        /// when the FetchRoster() receives the studentRoster, it then
-        /// stores the student roster into a list.
+        /// This method is obsolete because you shouldn't search for a student by their first
+        /// name, because there may be multiple students.
         /// </summary>
+        /// <param name="firstname"></param>
         /// <returns></returns>
-        public async Task<List<Student>> GetStudentRoster()
+        [Obsolete("method is for LINQ demo")] // example of a directive
+        public List<Student> GetStudentByFirstName(string firstname)
         {
-            Console.WriteLine("start async");
-            Console.WriteLine($"Count before fetch: {studentRoster.Count}");
-            var results = await FetchRoster();
-            Console.WriteLine($"Count after fetch: {studentRoster.Count}");
-            Console.WriteLine("end async");
+            var results = studentRoster.Where(fn => fn.firstname == firstname).ToList();
             return results;
         }
 
-        public Task<List<Student>> FetchRoster()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fullname"></param>
+        /// <returns></returns>
+        public IEnumerable<Student> GetStudentByFullName(string fullname)
         {
-            return Task.Run(() => { return studentRoster; });
+            var results = studentRoster.Where(fn => fn.Fullname == fullname);
+            return results;
+        }
+
+        public IEnumerable<Student> GetStudentByFullName(string firstname, string lastname)
+        {
+            return GetStudentByFullName($"{firstname} {lastname}");
         }
 
         public void PrintRosterCount()
@@ -194,30 +194,37 @@ namespace University.Courses
             return student;
         }
 
-        [Obsolete ("method is for LINQ demo")] // example of a directive
-        public List<Student> GetStudentByFirstName(string firstname)
-        {
-            var results = studentRoster.Where(fn => fn.firstname == firstname).ToList();
-            return results;
-        }
-
-        public IEnumerable<Student> GetStudentByFullName(string fullname)
-        {
-            var results = studentRoster.Where(fn => fn.Fullname == fullname);
-            return results;
-        }
-
-        public IEnumerable<Student> GetStudentByFullName(string firstname, string lastname)
-        {
-            return GetStudentByFullName($"{firstname} {lastname}");
-        }
-
-        private static bool CloseCourse(Course courseToClose)
+        private bool CloseCourse(Course courseToClose)
         {
             courseToClose.isClosed = true;
             Console.WriteLine($"Registration closed for {courseToClose.Title}");
             return true;
         }
+
+        /// <summary>
+        /// THREADING: (the following two functions below)
+        /// 
+        /// returns a list of all the students in the course;
+        /// runs simulanteously with the FetchRoster() function;
+        /// when the FetchRoster() receives the studentRoster, it then
+        /// stores the student roster into a list.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Student>> GetStudentRoster()
+        {
+            Console.WriteLine("start async");
+            Console.WriteLine($"Count before fetch: {studentRoster.Count}");
+            var results = await FetchRoster();
+            Console.WriteLine($"Count after fetch: {studentRoster.Count}");
+            Console.WriteLine("end async");
+            return results;
+        }
+
+        public Task<List<Student>> FetchRoster()
+        {
+            return Task.Run(() => { return studentRoster; });
+        }
+
 
         #region properties
         /// <summary>
@@ -231,6 +238,32 @@ namespace University.Courses
             }
         }
 
+        public TimeSpan CreditHours
+        {
+            get { return this.timeSpan; }
+        }
+
+        /// <summary>
+        /// checks to see if the class is full
+        /// </summary>
+        public bool isFull
+        {
+            get
+            {
+                return studentRoster.Count == Global.maxStudents;
+            }
+        }
+
+        /// <summary>
+        /// counts the number of students in a course
+        /// </summary>
+        public int RosterCount
+        {
+            get
+            {
+                return studentRoster.Count;
+            }
+        }
         #endregion properties
     }
 }

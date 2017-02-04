@@ -41,6 +41,8 @@ namespace RegistrationApp
             dotnet.cr = a1.ChangeCourseStatus;
             dotnet.cr += b2.ChangeCourseStatus;
 
+            Console.WriteLine($"The timespan of the {dotnet.Title} course is: {dotnet.CreditHours}");
+
             // adding students to the dotnet course
             dotnet.AddStudent(paul);
             dotnet.AddStudent(mike);
@@ -62,6 +64,15 @@ namespace RegistrationApp
             dotnet.AddStudent(erik);
             dotnet.AddStudent(summer);
             dotnet.AddStudent(kirk);
+            try
+            {
+                dotnet.AddStudent(kirk);
+            }
+            catch(Exception l)
+            {
+                Console.WriteLine(l.Message);
+            }
+
 
             // experimenting with the threads from the Course.cs
             Console.WriteLine();
@@ -170,6 +181,7 @@ namespace RegistrationApp
             //    // close file
             //}
             //#endregion try-catch-finally
+
 
             Console.ReadLine();
         }
