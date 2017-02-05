@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using University.Users;
 using University.Courses;
+using University;
 
 namespace RegistrationApp
 {
@@ -16,6 +17,7 @@ namespace RegistrationApp
             // declaring courses
             Course testCourse = new Course("AI", new DateTime());
             Course dotnet = new Course("dotnet", new DateTime());
+            Course testCourse2 = new Course("Math", new DateTime(), 2);
 
             // declaring students
             Student paul = new Student("Paul", "Stanton", "pwd", "1@1.com", 1);
@@ -42,6 +44,9 @@ namespace RegistrationApp
             dotnet.cr += b2.ChangeCourseStatus;
 
             Console.WriteLine($"The timespan of the {dotnet.Title} course is: {dotnet.CreditHours}");
+            Console.WriteLine($"Number of 1 credit courses: {Global.numberOf1HourCourses}");
+            Console.WriteLine($"Number of 2 credit courses: {Global.numberOf2HourCourses}\n");
+
 
             // adding students to the dotnet course
             dotnet.AddStudent(paul);

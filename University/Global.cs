@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using University.Courses;
 
 namespace University
 {
@@ -12,12 +13,15 @@ namespace University
         public static int maxNumberOfCourses = 15;
         public static int maxNumberOfOneHour = 10;
         public static int maxNumberOfTwoHour = 5;
+        public static int numberOf1HourCourses = 0;
+        public static int numberOf2HourCourses = 0;
     }
 
     public static class Errors
     {
         public static string notEnoughError = "Attempting to add too many students. Not enough space. Cannot add.";
         public static string notCorrectHours = "The class has to be either 1 or 2 credit hours.";
+        public static string tooMany1HourCourses = "There can only be at most 10 1-hour courses.";
     }
 
     /*

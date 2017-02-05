@@ -22,9 +22,14 @@ namespace University.Courses
         private TimeSpan timeSpan;
         #endregion fields
 
-
         #region constructors
+        /*
         public Course()
+        {
+        }
+        */
+
+        ~Course()
         {
         }
 
@@ -35,6 +40,11 @@ namespace University.Courses
             this.major = major;
             this.creditHour = creditHour;
 
+            /*
+             * if the inserted course's credit hours isn't 1 or 2, then it prompt the user to 
+             * insert either a 1 or a 2.
+             */
+
             while (creditHour != 1 && creditHour != 2)
             {
                 Console.WriteLine($"{Title}'s credit hours must be 1 or 2.");
@@ -43,10 +53,23 @@ namespace University.Courses
                 Console.WriteLine();
                 int i = Convert.ToInt32(correction);
                 creditHour = i;
-            }
-            
+            } // while
+
             this.timeSpan = new TimeSpan(creditHour, 0, 0);
-        } // while
+
+            switch (creditHour)
+            {
+                case 1:
+                    Global.numberOf1HourCourses++;
+                    break;
+
+                case 2:
+                    Global.numberOf2HourCourses++;
+                    break;
+            } // switch
+
+        } // Course constructor
+
         #endregion constructors
 
         /// <summary>
@@ -56,7 +79,6 @@ namespace University.Courses
         /// <returns></returns>
         public delegate bool CloseRegistration(Course courseToClose);
         public CloseRegistration cr = null;
-
         
         /// <summary>
         /// adds a student to the roster and increments the student roster
@@ -171,15 +193,6 @@ namespace University.Courses
                 throw new Exception(Errors.notEnoughError);
             }
             return true;
-        }
-
-        public bool OneOrTwo()
-        {
-            if(creditHour == 1 || creditHour == 2)
-            {
-                return true;
-            }
-            throw new Exception(Errors.notCorrectHours);
         }
 
         public Student GetStudentByID(int id)
